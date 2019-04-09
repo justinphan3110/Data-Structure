@@ -16,13 +16,13 @@ public class BinaryMaxHeap {
 		heap.add(7);
 		heap.add(8);
 		heap.add(5);
-		heap.removeMax();
-		heap.removeMax();
-		heap.removeMax();
-		heap.removeMax();
-		heap.removeMax();
-		heap.removeMax();
+		System.out.print("Unsorted Array: " );
 		heap.printHeap();
+		System.out.print("Sorted Array: ");
+		int[] sortedArray = heap.heapSort();
+		for(int i = 0; i < sortedArray.length; i++) {
+			System.out.print(sortedArray[i] + " ");
+		}
 	}
 
 	// Constructor receive the array size
@@ -128,6 +128,14 @@ public class BinaryMaxHeap {
 		}
 	}
 
+	public int[] heapSort() {
+		int[] temp = new int[lastPosition + 1];
+		int size = lastPosition;
+		for(int i = 0; i <= size; i ++) {
+			temp[i] = removeMax();
+		}
+		return temp;
+	}
 	// Print out the Heap
 	public void printHeap() {
 		for (int i = 0; i <= this.lastPosition; i++) {
