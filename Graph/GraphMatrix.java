@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 public class GraphMatrix {
@@ -17,7 +19,8 @@ public class GraphMatrix {
 	final static int v4 = 4;
 	final static int v5 = 5;
 	final static int v6 = 6;
-	final static String[] vertexArray = { "v0", "v1", "v2", "v3", "v4", "v5", "v6" };
+	final static int v7 = 7;
+	final static String[] vertexArray = { "v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7"};
 
 	// == Initialize the 3 coins vertex (H for head, T for tail)
 	final static int c0 = 0;
@@ -83,6 +86,29 @@ public class GraphMatrix {
 		int[] path = graph1.Dijsktra(v0, v4);
 		System.out.println("Path from " + graph1.labels[v0] + " to " + graph1.labels[v4] + ": ");
 		for (int i : path)
+			System.out.print(i + " ");
+		
+		
+		System.out.println();
+		System.out.println("===============");
+		// Test Dijkstra Graph
+		GraphMatrix graph2 = new GraphMatrix(8, vertexArray);
+		graph2.addEdge(v3, v1, 1);
+		graph2.addEdge(v3, v6, 9);
+		graph2.addEdge(v1, v4, 5);
+		graph2.addEdge(v1, v2, 2);
+		graph2.addEdge(v2, v4, 1);
+		graph2.addEdge(v2, v5, 4);
+		graph2.addEdge(v4, v3, 8);
+		graph2.addEdge(v4, v5, 1);
+		graph2.addEdge(v4, v6, 7);
+		graph2.addEdge(v4, v7, 7);
+		graph2.addEdge(v5, v7, 2);
+		graph2.addEdge(v7, v6, 1);
+		
+		int[] path2 = graph2.Dijsktra(v3, v6);
+		System.out.println("Path from " + graph1.labels[v3] + " to " + graph1.labels[v6] + ": ");
+		for (int i : path2)
 			System.out.print(i + " ");
 
 	}
@@ -195,22 +221,22 @@ public class GraphMatrix {
 	public void breadthFirstSearch(int source, int target) {
 
 		// Stack to perform BFS
-		Stack<Integer> stack = new Stack<>();
+		Queue<Integer> queue = new LinkedList<>();
 		boolean[] track = new boolean[edges.length];
 		track[source] = true;
-		stack.add(source);
+		queue.add(source);
 		System.out.println("Starting at : " + labels[source]);
 
-		while (!stack.isEmpty()) {
+		while (!queue.isEmpty()) {
 
 			// get neighbors array of the vertex
-			int tempVertex = stack.pop();
+			int tempVertex = queue.poll();
 			Integer[] neighbors = getNeighbors(tempVertex);
 
 			for (Integer vertex : neighbors) {
 				// Keep track if we already visit this Vertex or not
 				if (!track[vertex]) {
-					stack.push(vertex);
+					queue.add(vertex);
 					track[vertex] = true;
 					System.out.println(
 							labels[tempVertex] + " to " + labels[vertex] + (vertex == target ? ":FOUND A PATH " : ""));

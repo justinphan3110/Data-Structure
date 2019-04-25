@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Stack;
 
 public class GraphList {
@@ -20,6 +20,7 @@ public class GraphList {
 		final String[] labels = { "v0", "v1", "v2", "v3", "v4", "v5", "v6" };
 
 		// === Test BFS ==
+		System.out.println(" =========== Test BFS ===============");
 		GraphList graph = new GraphList(7);
 		graph.addEdge(v0, v1);
 		graph.addEdge(v0, v4);
@@ -33,6 +34,7 @@ public class GraphList {
 
 		// == Test Dijkstra ==
 		// Dijkstra Graph
+		System.out.println("======== Test Dijkstra===");
 		GraphList graph1 = new GraphList(6, labels);
 		graph1.addEdge(v0, v1, 2);
 		graph1.addEdge(v0, v5, 9);
@@ -97,9 +99,7 @@ public class GraphList {
 		if (source == target)
 			return new int[] { source };
 
-		int originalSource = source;
 		// Data structure for Dijsktra Algorithm
-
 		// Initalize all path except source as Infinity, source Weight = 0
 		double[] path = new double[size];
 		for (int i = 0; i < path.length; i++) {
@@ -139,7 +139,7 @@ public class GraphList {
 				}
 			}
 			System.out.println();
-			
+
 			// Find smallest path
 			double smallest = Double.MAX_VALUE;
 			for (int j = 0; j < size; j++) {
@@ -177,16 +177,17 @@ public class GraphList {
 	public boolean BreadthFirstSearch(int source, int target) {
 		if (source == target)
 			return true;
+		
 		// Stack and track array
-		Stack<List<List<Integer>>> stack = new Stack<>();
+		Queue<List<List<Integer>>> queue = new LinkedList<>();
 		boolean[] track = new boolean[size];
 
 		// Add source into the stack and start from source
-		stack.push(vertexArray[source]);
+		queue.add(vertexArray[source]);
 		track[source] = true;
-		while (!stack.isEmpty()) {
+		while (!queue.isEmpty()) {
 			// Neighbors List of source
-			List<List<Integer>> neighbors = stack.pop();
+			List<List<Integer>> neighbors = queue.poll();
 			System.out.println("Neighbor: " + neighbors);
 
 			// Breadth first search through each neighborsList
@@ -198,7 +199,7 @@ public class GraphList {
 
 				// check if the neighbor already checked ? add into stack
 				if (!track[neighbors.get(i).get(0)]) {
-					stack.push(vertexArray[neighbors.get(i).get(0)]);
+					queue.add(vertexArray[neighbors.get(i).get(0)]);
 					track[neighbors.get(i).get(0)] = true;
 				}
 			}
