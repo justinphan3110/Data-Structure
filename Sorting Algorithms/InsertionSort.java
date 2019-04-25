@@ -9,8 +9,7 @@ public class InsertionSort {
 			int i;
 			for(i = unsortedIndex; i > 0 && array[i -1 ] > swapElement; i--) {
 					array[i] = array[i - 1];
-			}
-			
+			}		
 			array[i] = swapElement;
 			printArray(array, unsortedIndex);
 
