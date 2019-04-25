@@ -4,15 +4,13 @@ public class InsertionSort {
 		
 		// unsorted Index will start at 1 and traverse right
 		for(int unsortedIndex = 1; unsortedIndex < array.length; unsortedIndex++) {
-			int swapElement = array[unsortedIndex];
-			
+			int swapElement = array[unsortedIndex];		
 			int i;
 			for(i = unsortedIndex; i > 0 && array[i -1 ] > swapElement; i--) {
 					array[i] = array[i - 1];
 			}		
 			array[i] = swapElement;
 			printArray(array, unsortedIndex);
-
 		}
 		for(Integer i: array)
 			System.out.print(i + " ");
