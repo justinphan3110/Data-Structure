@@ -1,9 +1,9 @@
 
-public class Graph 
+public class SimpleGraphTraverse 
 {
 	
    public static void main(String[] args) {
-	   Graph graph = new Graph(4);
+	   SimpleGraphTraverse graph = new SimpleGraphTraverse(4);
 	   // == Initalize the town value== 
 	   final int  Byteville = 0;
 	   final int  Bitburg = 1;
@@ -46,7 +46,7 @@ public class Graph
    //      vertex from i to j; otherwise edges[i][j] is false.  
    private double[ ][ ] edges;
    private String[] labels;
-   public Graph(int n)
+   public SimpleGraphTraverse(int n)
    {
       edges = new double[n][n];  
    // All values initially -1, mean no path

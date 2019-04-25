@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="BST"/>
+	<classpathentry kind="src" path="BTree"/>
+	<classpathentry kind="src" path="Graph"/>
+	<classpathentry kind="src" path="HashTable"/>
+	<classpathentry kind="src" path="Heap"/>
+	<classpathentry kind="src" path="Searching Algorithms"/>
+	<classpathentry excluding="RadixSortStringAlphabetically/" kind="src" path="Sorting Algorithms"/>
+	<classpathentry kind="src" path="Sorting Algorithms/RadixSortStringAlphabetically"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
