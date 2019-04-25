@@ -185,24 +185,31 @@ public class GraphList {
 		// Add source into the queue and start from source
 		queue.add(vertexArray[source]);
 		track[source] = true;
+		// Iterate V times
 		while (!queue.isEmpty()) {
 			// Neighbors List of source
+			// O(1)
 			List<List<Integer>> neighbors = queue.poll();
 			System.out.println("Neighbor: " + neighbors);
 
+			//O(Eadj)
 			// Breadth first search through each neighborsList
 			for (int i = 0; i < neighbors.size(); i++) {
 				System.out.println("Check vertex: " + neighbors.get(i));
+				
+				// Return true if the vertex is target
 				// 0 index is target and 1 index is weight
 				if (neighbors.get(i).get(0) == target)
 					return true;
-
-				// check if the neighbor already checked ? add into stack
+				
+				// check if the neighbor already checked ? add into  
 				if (!track[neighbors.get(i).get(0)]) {
 					queue.add(vertexArray[neighbors.get(i).get(0)]);
 					track[neighbors.get(i).get(0)] = true;
 				}
 			}
+			// Total: V(O(1) + O(Eadj)) = O(V + V * Eadj) = O(V + E) 
+			
 		}
 		// Return false if there is no correspond path
 		return false;
