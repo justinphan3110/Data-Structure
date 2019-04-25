@@ -220,7 +220,7 @@ public class GraphMatrix {
 
 	public void breadthFirstSearch(int source, int target) {
 
-		// Stack to perform BFS
+		// Queue to perform BFS
 		Queue<Integer> queue = new LinkedList<>();
 		boolean[] track = new boolean[edges.length];
 		track[source] = true;
